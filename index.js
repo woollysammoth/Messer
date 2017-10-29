@@ -300,7 +300,7 @@ function authenticate(credentials, cbb) {
 				}
 			})
 
-setTimeout(function(){process.stdout.write(cbb)},1500)
+setTimeout(function(){process.stdout.write('${cbb}\n')},1500)
 		})
 
 	})
