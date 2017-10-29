@@ -298,11 +298,12 @@ function authenticate(credentials, cbb) {
 			repl.start({
 				ignoreUndefined: true,
 				eval(cmd) {
+					if(cbb){
+						processCommand(cbb)
+					}
 					processCommand(cmd)
 				}
 			})
-
-			if(cbb) cbb(repl)
 		})
 
 	})
