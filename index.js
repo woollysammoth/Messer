@@ -300,7 +300,7 @@ function authenticate(credentials, cbb) {
 				}
 			})
 
-process.stdout(cbb);
+console.log(cbb);
 		})
 
 	})
