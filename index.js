@@ -51,9 +51,7 @@ if (process.argv.length < 3) {
 	fs.readFile(process.argv[2], (err, data) => {
 		if (err) return console.log(err)
 
-		authenticate(JSON.parse(data), function(repl){
-			repl.processCommand(process.argv[3])
-		})
+		authenticate(JSON.parse(data), process.argv[3])
 	})
 }
 
