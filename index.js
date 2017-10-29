@@ -51,7 +51,9 @@ if (process.argv.length < 3) {
 	fs.readFile(process.argv[2], (err, data) => {
 		if (err) return console.log(err)
 
-		authenticate(JSON.parse(data))
+		authenticate(JSON.parse(data), function(repl){
+			repl.processCommand(process.argv[3])
+		})
 	})
 }
 
@@ -274,7 +276,7 @@ function processCommand(rawCommand) {
 	}
 }
 
-function authenticate(credentials) {
+function authenticate(credentials, cbb) {
 	facebook(credentials, (err, fbApi) => {
 		if (err) return
 
@@ -299,6 +301,8 @@ function authenticate(credentials) {
 					processCommand(cmd)
 				}
 			})
+
+			if(cbb) cbb(repl)
 		})
 
 	})
