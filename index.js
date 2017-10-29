@@ -157,9 +157,11 @@ const commands = {
 		}
 
 		// Find the given receiver in the users friendlist
-		const receiver = user.friendsList.find(f => {
-			return f.fullName.toLowerCase().startsWith(rawReceiver.toLowerCase())
-		})
+		//const receiver = user.friendsList.find(f => {
+		//	return f.fullName.toLowerCase().startsWith(rawReceiver.toLowerCase())
+		//})
+
+		const receiver = parseInt(rawReceiver, 10)
 
 		if (!receiver) {
 			console.warn(`User '${rawReceiver}' could not be found in your friends list!`)
