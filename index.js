@@ -161,14 +161,14 @@ const commands = {
 		//	return f.fullName.toLowerCase().startsWith(rawReceiver.toLowerCase())
 		//})
 
-		const receiver = parseInt(rawReceiver, 10)
+		const receiver = rawReceiver
 
 		if (!receiver) {
 			console.warn(`User '${rawReceiver}' could not be found in your friends list!`)
 			return
 		}
 
-		api.sendMessage(message, receiver.userID, err => {
+		api.sendMessage(message, receiver, err => {
 			if (err) return console.error("ERROR:", err.error)
 
 			console.log(`Sent message to ${receiver.fullName}`)
