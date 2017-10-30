@@ -125,9 +125,8 @@ var suffix = suffs[Math.floor(Math.random()*suffs.length)];
 var wotd = [prefix, suffix].join("")
 
 	console.log("wotd = ", wotd)
-	var cmd = 'message "957705844355019" The Word of the Day is ' + wotd;
 
-		processCommand(cmd)
+		processCommand('message "957705844355019" The Word of the Day is ' + wotd)
 	}
 
 	if (message.attachments.length === 0) {
