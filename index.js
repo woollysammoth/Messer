@@ -116,18 +116,6 @@ function handleMessage(message) {
 		messageBody = "unrenderable in Messer :("
 	}
 
-	if(messageBody == "what is the word of the day?"){
-		var pres = ["Bri", "Joa", "Re", "Pro", "Fir", "Pje", "Broon", "Rebi", "Jin", "Woo", "Prou", "Jem", ];
-var suffs = ["sh", "nt", "ngsh", "ng", "nt", "vel", "mbi", "ji", "ski", "ngo", "ngi", "bo", "boo", "ree", "ush", "himsth", ""]
-
-var prefix = pres[Math.floor(Math.random()*pres.length)];
-var suffix = suffs[Math.floor(Math.random()*suffs.length)];
-var wotd = [prefix, suffix].join("")
-
-	console.log("wotd = ", wotd)
-
-		processCommand('message "957705844355019" The Word of the Day is ' + wotd)
-	}
 
 	if (message.attachments.length === 0) {
 		console.log(`New message from ${sender} - ${messageBody}`)
@@ -139,6 +127,19 @@ var wotd = [prefix, suffix].join("")
 			messageBody = facebookStickers[attachment.packID][attachment.stickerID] || messageBody
 
 		console.log(`New ${attachmentType} from ${sender} - ${messageBody}`)
+	}
+
+	if(messageBody === "what is the word of the day?"){
+		var pres = ["Bri", "Joa", "Re", "Pro", "Fir", "Pje", "Broon", "Rebi", "Jin", "Woo", "Prou", "Jem", ];
+var suffs = ["sh", "nt", "ngsh", "ng", "nt", "vel", "mbi", "ji", "ski", "ngo", "ngi", "bo", "boo", "ree", "ush", "himsth", ""]
+
+var prefix = pres[Math.floor(Math.random()*pres.length)];
+var suffix = suffs[Math.floor(Math.random()*suffs.length)];
+var wotd = [prefix, suffix].join("")
+
+	console.log("wotd = ", wotd)
+
+		processCommand('message "957705844355019" The Word of the Day is ' + wotd)
 	}
 
 	lastThread = message.threadID
@@ -273,6 +274,7 @@ const commands = {
  * Execute appropriate action for user input commands
  */
 function processCommand(rawCommand) {
+	if(!rawCommand) return
 	// skip if command is only spaces
 	if (rawCommand.trim().length === 0) return
 
