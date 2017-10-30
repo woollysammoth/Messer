@@ -129,10 +129,13 @@ function handleMessage(message) {
 		console.log(`New ${attachmentType} from ${sender} - ${messageBody}`)
 	}
 
-	if(messageBody === "what is the word of the day?"){
-		var pres = ["Bri", "Joa", "Re", "Pro", "Fir", "Pje", "Broon", "Rebi", "Jin", "Woo", "Prou", "Jem", ];
-var suffs = ["sh", "nt", "ngsh", "ng", "nt", "vel", "mbi", "ji", "ski", "ngo", "ngi", "bo", "boo", "ree", "ush", "himsth", ""]
+	var pres = ["Bri", "Joa", "Re", "Pro", "Fir", "Pje", "Broon", "Rebi", "Jin", "Woo", "Prou", "Jem"];
+	var suffs = ["sh", "nt", "ngsh", "ng", "nt", "vel", "mbi", "ji", "ski", "ngo", "ngi", "bo", "boo", "ree", "ush", "himsth", ""]
+	var fName = ["Jamocha", "Jameth", "Trendle", "Fern", "Tristan", "Jehadith"]
+	var lName = ["Jones", "Smith", "Trentwood", "Jacobs"]
+	
 
+	if(messageBody === "what is the word of the day?"){
 var prefix = pres[Math.floor(Math.random()*pres.length)];
 var suffix = suffs[Math.floor(Math.random()*suffs.length)];
 var wotd = [prefix, suffix].join("")
@@ -140,6 +143,13 @@ var wotd = [prefix, suffix].join("")
 	console.log("wotd = ", wotd)
 
 		processCommand('message "957705844355019" The Word of the Day is ' + wotd)
+	}
+
+	if(messageBody === "give me a random boy name"){
+		var fn = fName[Math.floor(Math.random()*fName.length)];
+		var ln = lName[Math.floor(Math.random()*lName.length)];
+		var boyname = [fn, ln].join(" ")
+		processCommand('message "957705844355019" Random Boy Name is ' + boyname)
 	}
 
 	lastThread = message.threadID
