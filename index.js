@@ -301,6 +301,7 @@ function authenticate(credentials, cbb) {
 		getUserDetails(api, user).then(() => {
 			console.info("Listening for incoming messages...")
 
+			api.setOptions({selfListen: true})
 			// listen for incoming messages
 			api.listen((err, message) => {
 				if (err) return
